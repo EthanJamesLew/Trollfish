@@ -114,7 +114,7 @@ using ContinuationHistory = Stats<PieceToHistory, NOT_USED, PIECE_NB, SQUARE_NB>
 /// likely to get a cut-off first.
 class MovePicker {
 
-  enum PickType { Next, Best };
+  enum PickType { Next, Best, Troll };
 
 public:
   MovePicker(const MovePicker&) = delete;

@@ -160,6 +160,9 @@ Move MovePicker::select(Pred filter) {
       if constexpr (T == Best)
           std::swap(*cur, *std::max_element(cur, endMoves));
 
+      if constexpr (T == Troll)
+          std::swap(*cur, *std::min_element(cur, endMoves));
+
       if (*cur != ttMove && filter())
           return *cur++;
 
