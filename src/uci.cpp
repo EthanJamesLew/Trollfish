@@ -24,6 +24,7 @@
 
 #include "benchmark.h"
 #include "evaluate.h"
+#include "misc.h"
 #include "movegen.h"
 #include "position.h"
 #include "search.h"
@@ -255,6 +256,11 @@ void UCI::loop(int argc, char* argv[]) {
       if (    token == "quit"
           ||  token == "stop")
           Threads.stop = true;
+
+      // the interface allow setting and unsetting trolling option to enable or disable
+      // trolling  
+      else if (token == "trolling")
+          sync_cout << "trolling: " << token << "\n";
 
       // The GUI sends 'ponderhit' to tell that the user has played the expected move.
       // So, 'ponderhit' is sent if pondering was done on the same move that the user
