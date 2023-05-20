@@ -2,45 +2,26 @@
 
   [![Stockfish][stockfish128-logo]][website-link]
 
-  <h3>Stockfish</h3>
+  <h3>Trollfish</h3>
 
-  A free and strong UCI chess engine.
+  A trolling and strong UCI chess engine.
   <br>
   <strong>[Explore Stockfish docs »][wiki-link]</strong>
   <br>
   <br>
-  [Report bug][issue-link]
-  ·
-  [Open a discussion][discussions-link]
-  ·
-  [Discord][discord-link]
-  ·
-  [Blog][website-blog-link]
-
-  [![Build][build-badge]][build-link]
-  [![License][license-badge]][license-link]
-  <br>
-  [![Release][release-badge]][release-link]
-  [![Commits][commits-badge]][commits-link]
-  <br>
-  [![Website][website-badge]][website-link]
-  [![Fishtest][fishtest-badge]][fishtest-link]
-  [![Discord][discord-badge]][discord-link]
-
 </div>
 
 ## Overview
 
-[Stockfish][website-link] is a **free and strong UCI chess engine** derived from
-Glaurung 2.1 that analyzes chess positions and computes the optimal moves.
+[Trollfish][website-link] is a free, entertaining, and unique UCI chess engine derived from
+Stockfish. It's been humorously tweaked to prioritize drawing games over winning. When analyzing chess positions, it computes moves that have the best chance of leading to a draw, rather than the optimal winning moves. This makes for a novel and amusing chess experience!
 
-Stockfish **does not include a graphical user interface** (GUI) that is required
-to display a chessboard and to make it easy to input moves. These GUIs are
-developed independently from Stockfish and are available online. **Read the
-documentation for your GUI** of choice for information about how to use
-Stockfish with it.
+Like its predecessor, Trollfish does not include a graphical user interface (GUI) that is needed to display a chessboard and to facilitate move inputs. These GUIs are developed independently from Trollfish and can be found online. Consult the
+documentation for your GUI of choice for instructions on how to use Trollfish with it.
 
-See also the Stockfish [documentation][wiki-usage-link] for further usage help.
+Bear in mind that Trollfish is intended as a lighthearted joke and is not designed for serious competitive play. It's perfect for players looking for a fun diversion from traditional chess engines.
+
+Check out the Trollfish [documentation][wiki-usage-link] for further usage help and enjoy the hilarity of striving for a draw with every move!
 
 ## Files
 
@@ -145,7 +126,7 @@ also be made available under GPL v3.
 [readme-link]:        https://github.com/official-stockfish/Stockfish/blob/master/README.md
 [release-link]:       https://github.com/official-stockfish/Stockfish/releases/latest
 [src-link]:           https://github.com/official-stockfish/Stockfish/tree/master/src
-[stockfish128-logo]:  https://stockfishchess.org/images/logo/icon_128x128.png
+[stockfish128-logo]: ./img/stockfish-trollface-128.png
 [uci-link]:           https://backscattering.de/chess/uci/
 [website-link]:       https://stockfishchess.org
 [website-blog-link]:  https://stockfishchess.org/blog/
