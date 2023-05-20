@@ -1079,11 +1079,7 @@ Value Eval::evaluate(const Position& pos) {
 
       optimism = optimism * (274 + nnueComplexity) / 256;
      
-      // TODO: ELEW: how to evaluate this?
-      if (useTroll)
-         v = ((-nnue * scale) / 512 + optimism * (scale - 791)) / 1024;
-      else
-         v = (nnue * scale + optimism * (scale - 791)) / 1024;
+      v = (nnue * scale + optimism * (scale - 791)) / 1024;
   }
 
   // Damp down the evaluation linearly when shuffling

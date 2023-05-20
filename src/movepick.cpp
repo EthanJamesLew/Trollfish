@@ -17,6 +17,7 @@
 */
 
 #include <cassert>
+#include <cmath>
 
 #include "bitboard.h"
 #include "movepick.h"
@@ -32,19 +33,23 @@ namespace {
     QSEARCH_TT, QCAPTURE_INIT, QCAPTURE, QCHECK_INIT, QCHECK
   };
 
-  // partial_insertion_sort() sorts moves in descending order up to and including
-  // a given limit. The order of moves smaller than the limit is left unspecified.
-  void partial_insertion_sort(ExtMove* begin, ExtMove* end, int limit) {
-
-    for (ExtMove *sortedEnd = begin, *p = begin + 1; p < end; ++p)
-        if (p->value >= limit)
-        {
-            ExtMove tmp = *p, *q;
-            *p = *++sortedEnd;
-            for (q = sortedEnd; q != begin && *(q - 1) < tmp; --q)
-                *q = *(q - 1);
-            *q = tmp;
-        }
+  // partial_insertion_sort() sorts moves by their distance to a target value.
+  // The order of moves farther than the limit from the target is left unspecified.
+  void partial_insertion_sort(ExtMove* begin, ExtMove* end, int target, int limit) {
+  
+      auto distance = [target](int val) { return std::abs(val - target); };
+  
+      for (ExtMove *sortedEnd = begin, *p = begin + 1; p < end; ++p)
+      {
+          if (distance(p->value) <= limit)
+          {
+              ExtMove tmp = *p, *q;
+              *p = *++sortedEnd;
+              for (q = sortedEnd; q != begin && distance((q - 1)->value) > distance(tmp.value); --q)
+                  *q = *(q - 1);
+              *q = tmp;
+          }
+      }
   }
 
 } // namespace
@@ -159,9 +164,12 @@ Move MovePicker::select(Pred filter) {
   {
       if constexpr (T == Best)
           std::swap(*cur, *std::max_element(cur, endMoves));
-
-      if constexpr (T == Troll)
-          std::swap(*cur, *std::min_element(cur, endMoves));
+    
+      // TODO: is above zero winning positions?
+      if constexpr (T == Troll) {
+          if (endMoves->value > 0)
+              std::swap(*cur, *std::min_element(cur, endMoves));
+      };
 
       if (*cur != ttMove && filter())
           return *cur++;
@@ -193,7 +201,7 @@ top:
       endMoves = generate<CAPTURES>(pos, cur);
 
       score<CAPTURES>();
-      partial_insertion_sort(cur, endMoves, std::numeric_limits<int>::min());
+      partial_insertion_sort(cur, endMoves, std::numeric_limits<int>::min(), 0);
       ++stage;
       goto top;
 
@@ -231,7 +239,7 @@ top:
           endMoves = generate<QUIETS>(pos, cur);
 
           score<QUIETS>();
-          partial_insertion_sort(cur, endMoves, -3000 * depth);
+          partial_insertion_sort(cur, endMoves, -3000 * depth, 0);
       }
 
       ++stage;
@@ -262,8 +270,9 @@ top:
       ++stage;
       [[fallthrough]];
 
+  // TODO: ELEW: set control logic to switch between troll and best
   case EVASION:
-      return select<Best>([](){ return true; });
+      return select<Troll>([](){ return true; });
 
   case PROBCUT:
       return select<Next>([&](){ return pos.see_ge(*cur, threshold); });
