@@ -1299,7 +1299,7 @@ moves_loop: // When in check, search starts here
               rm.score = -VALUE_INFINITE;
       }
 
-      if (value > bestValue)
+      if (std::abs(value) < std::abs(bestValue))
       {
           bestValue = value;
 
@@ -1596,7 +1596,7 @@ moves_loop: // When in check, search starts here
       assert(value > -VALUE_INFINITE && value < VALUE_INFINITE);
 
       // Step 8. Check for a new best move
-      if (value > bestValue)
+      if (std::abs(value) < std::abs(bestValue))
       {
           bestValue = value;
 
