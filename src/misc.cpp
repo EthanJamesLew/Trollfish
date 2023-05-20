@@ -154,7 +154,7 @@ public:
 
 string engine_info(bool to_uci) {
   stringstream ss;
-  ss << "Stockfish " << version << setfill('0');
+  ss << "Trollfish " << version << setfill('0');
 
   if constexpr (version == "dev")
   {
@@ -180,7 +180,7 @@ string engine_info(bool to_uci) {
   }
 
   ss << (to_uci  ? "\nid author ": " by ")
-     << "the Stockfish developers (see AUTHORS file)";
+     << "the Trollfish developers (see AUTHORS file)";
 
   return ss.str();
 }
