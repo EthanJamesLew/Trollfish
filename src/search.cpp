@@ -256,6 +256,17 @@ void MainThread::search() {
 }
 
 
+/// logic to determine trolling: if losing, turn stockfish back on
+/// else, troll (smallest positive evaluation)
+inline bool _swap_values(double value, double bestValue) {
+    if (bestValue < 0.0f) {
+        return (value > bestValue);
+    } else {
+        return (std::abs(value) < std::abs(bestValue));
+    }
+}
+
+
 /// Thread::search() is the main iterative deepening loop. It calls search()
 /// repeatedly with increasing depth until the allocated thinking time has been
 /// consumed, the user stops the search, or the maximum search depth is reached.
@@ -1299,7 +1310,7 @@ moves_loop: // When in check, search starts here
               rm.score = -VALUE_INFINITE;
       }
 
-      if (std::abs(value) < std::abs(bestValue))
+      if (_swap_values(value, bestValue))
       {
           bestValue = value;
 
@@ -1596,7 +1607,7 @@ moves_loop: // When in check, search starts here
       assert(value > -VALUE_INFINITE && value < VALUE_INFINITE);
 
       // Step 8. Check for a new best move
-      if (std::abs(value) < std::abs(bestValue))
+      if (_swap_values(value, bestValue))
       {
           bestValue = value;
 
