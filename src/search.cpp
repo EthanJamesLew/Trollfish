@@ -259,10 +259,10 @@ void MainThread::search() {
 /// logic to determine trolling: if losing, turn stockfish back on
 /// else, troll (smallest positive evaluation)
 inline bool _swap_values(double value, double bestValue) {
-    if (bestValue < 0.0f) {
-        return (value > bestValue);
-    } else {
+    if (bestValue > 0.0f && value > 0.0f) {
         return (std::abs(value) < std::abs(bestValue));
+    } else {
+        return (value > bestValue);
     }
 }
 
