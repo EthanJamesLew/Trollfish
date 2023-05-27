@@ -8,6 +8,9 @@
   <br>
   <strong>[Explore Stockfish docs »][wiki-link]</strong>
   <br>
+  [![lichess-rapid](https://lichess-shield.vercel.app/api?username=Trollfish-Bot&format=bullet)](https://lichess.org/@/Trollfish-Bot/perf/bullet)
+  [![lichess-rapid](https://lichess-shield.vercel.app/api?username=Trollfish-Bot&format=blitz)](https://lichess.org/@/Trollfish-Bot/perf/blitz)
+  [![lichess-rapid](https://lichess-shield.vercel.app/api?username=Trollfish-Bot&format=rapid)](https://lichess.org/@/Trollfish-Bot/perf/rapid)
   <br>
 </div>
 
