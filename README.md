@@ -6,7 +6,7 @@
 
   A trolling and strong UCI chess engine.
   <br>
-  <strong>[Explore Stockfish docs »][wiki-link]</strong>
+  <strong>[Explore Trollfish docs »][wiki-link]</strong>
   <br>
   [![lichess-rapid](https://lichess-shield.vercel.app/api?username=Trollfish-Bot&format=bullet)](https://lichess.org/@/Trollfish-Bot/perf/bullet)
   [![lichess-rapid](https://lichess-shield.vercel.app/api?username=Trollfish-Bot&format=blitz)](https://lichess.org/@/Trollfish-Bot/perf/blitz)
@@ -133,7 +133,7 @@ also be made available under GPL v3.
 [uci-link]:           https://backscattering.de/chess/uci/
 [website-link]:       https://stockfishchess.org
 [website-blog-link]:  https://stockfishchess.org/blog/
-[wiki-link]:          https://github.com/official-stockfish/Stockfish/wiki
+[wiki-link]:          https://www.youtube.com/watch?v=eBGIQ7ZuuiU
 [wiki-usage-link]:    https://github.com/official-stockfish/Stockfish/wiki/Download-and-usage
 [wiki-compile-link]:  https://github.com/official-stockfish/Stockfish/wiki/Compiling-from-source
 [wiki-commands-link]: https://github.com/official-stockfish/Stockfish/wiki/Commands
